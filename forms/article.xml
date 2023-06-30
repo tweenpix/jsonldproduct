@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fields name="attribs">
+        <fieldset name="jsonldproduct" label="JSON-LD Продукт">
+
+
+            <field
+                name="enableJsonLd"
+                type="radio"
+                label="Включить JSON-LD"
+                default="0"
+            >
+                <option value="0">Выключено</option>
+                <option value="1">Включено</option>
+            </field>
+
+            <field
+                name="lowPrice"
+                type="text"
+                label="Низкая цена"
+                class="jsonld-fields"
+                showon="attribs.enableJsonLd:1"
+            />
+            <field
+                name="highPrice"
+                type="text"
+                label="Высокая цена"
+                class="jsonld-fields"
+                showon="attribs.enableJsonLd:1"
+            />
+            <field
+                name="ratingValue"
+                type="text"
+                label="Значение рейтинга"
+                class="jsonld-fields"
+                showon="attribs.enableJsonLd:1"
+            />
+            <field
+                name="bestRating"
+                type="text"
+                label="Лучший рейтинг"
+                class="jsonld-fields"
+                showon="attribs.enableJsonLd:1"
+            />
+            <field
+                name="ratingCount"
+                type="text"
+                label="Количество рейтингов"
+                class="jsonld-fields"
+                showon="attribs.enableJsonLd:1"
+            />
+        </fieldset>
+    </fields>
+    <script>
+        Joomla.behavior.applyJsonLdToggle = function (field) {
+            var enableJsonLd = field.getElement('input:checked').get('value');
+            var jsonLdFields = field.form.getElements('.jsonld-fields');
+
+            if (enableJsonLd == '1') {
+                jsonLdFields.setStyle('display', 'block');
+            } else {
+                jsonLdFields.setStyle('display', 'none');
+            }
+        };
+
+        Joomla.formRules.push({
+            applyTo: '.jsonld-toggle',
+            onInit: function (field) {
+                Joomla.behavior.applyJsonLdToggle(field);
+            },
+            onRefresh: function (field) {
+                Joomla.behavior.applyJsonLdToggle(field);
+            }
+        });
+    </script>
+</form>

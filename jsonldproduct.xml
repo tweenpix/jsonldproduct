@@ -1,0 +1,15 @@
+<extension version="3.9" type="plugin" group="content" method="upgrade">
+    <name>plg_content_jsonldproduct</name>
+    <author>Taras Penzin</author>
+    <creationDate>June 2023</creationDate>
+    <license>GPLv2 or later</license>
+    <version>1.0</version>
+    <description>generator json-ld product for article</description>
+    <files>
+        <filename plugin="jsonldproduct">jsonldproduct.php</filename>
+        <folder>forms</folder>
+    </files>
+    <config>
+    </config>
+    <ordering>100</ordering>
+</extension>
